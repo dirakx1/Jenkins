@@ -2,8 +2,9 @@
 
 Manage with groovy. 
 
-'''
+
 Simple example program 
+```
 #!/usr/bin/env groovy
 
 import com.cloudbees.groovy.cps.NonCPS
@@ -70,5 +71,5 @@ def Set() {
 }
 
 // call Set function here. 
-'''
+```
 
