@@ -2,7 +2,7 @@
 
 Manage with groovy. 
 
-"""
+'''
 Simple example program 
 #!/usr/bin/env groovy
 
@@ -70,5 +70,5 @@ def Set() {
 }
 
 // call Set function here. 
-"""
+'''
 
