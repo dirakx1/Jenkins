@@ -1,10 +1,31 @@
 # Jenkins
 
-Manage with groovy. 
+* Install Jenkins via docker (https://jenkins.io/doc/book/installing/ run via jenkins.sh locally) or also installing on GCP. (https://console.cloud.google.com/marketplace/details/bitnami-launchpad/jenkins)
+Estimated costs: $14.20/month
+
++ Install jenkings plugin "google kubernetes engine"
+* Install kubectl inside docker container that has jenkins inside.
+```
+# Set the Kubernetes version as found in the UCP Dashboard or API
+k8sversion=v1.11.5
+
+# Get the kubectl binary.
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$k8sversion/bin/linux/amd64/kubectl
+
+# Make the kubectl binary executable.
+chmod +x ./kubectl
+
+# Move the kubectl executable to /usr/local/bin.
+sudo mv ./kubectl /usr/local/bin/kubectl
+OR
+mv ./kubectl /usr/local/bin/kubectl
+```
+
+## Pipelines with groovy. 
 
 
 Simple example program 
-```
+
 #!/usr/bin/env groovy
 
 import com.cloudbees.groovy.cps.NonCPS
