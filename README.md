@@ -1,5 +1,7 @@
 # Jenkins
 
+### Explicar mas jenkins, 
+
 * Install Jenkins via docker (https://jenkins.io/doc/book/installing/ run via jenkins.sh locally) or also installing on GCP. (https://console.cloud.google.com/marketplace/details/bitnami-launchpad/jenkins)
 Estimated costs: $14.20/month
 
@@ -7,6 +9,7 @@ Estimated costs: $14.20/month
 * Install kubectl inside docker container that has jenkins inside.
 ```
 # Set the Kubernetes version as found in the UCP Dashboard or API
+
 k8sversion=v1.11.5
 
 # Get the kubectl binary.
