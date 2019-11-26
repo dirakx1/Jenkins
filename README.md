@@ -1,7 +1,5 @@
 # Jenkins
 
-### Explicar mas jenkins, 
-
 * Install Jenkins via docker (https://jenkins.io/doc/book/installing/ run via jenkins.sh locally) or also installing on GCP. (https://console.cloud.google.com/marketplace/details/bitnami-launchpad/jenkins)
 Estimated costs: $14.20/month
 
