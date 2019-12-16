@@ -79,32 +79,7 @@ or access the DB via docker and configure users following:
 * Install other needed plugins: junit, influxdb, jacoco, git and pipeline.
 * Configure the influxdb target on jenkins overall configuration (use global listener)
 * Test a hello world job on shell executor and see if data is being stored by influxdb (using localhost influxdb url)
-* Construct the pipelines needed for the aplicacion mundo terpel (backend-frontend) needed to run:
-there are 2 types of pipelines declarative and scripted, for example:
- 
- ```
- pipeline {
-    agent {
-        docker { image 'node:7-alpine' }
-    }
-    stages {
-        stage('Build') {
-            steps {
-                sh 'node --version'
-            }
-        }
-        stage('Test') { 
-            steps {
-                sh 'node --version'
-            }
-        }
-        stage('Deploy') { 
-            steps {
-                sh 'node --version'
-            }
-        }
-    }
-} 
-```
+* Construct the pipelines (backend-frontend) needed to run.
+
 
 
