@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+    stages {
+        stage('Initial CD'){
+            steps {
+              // gcloud AUTH - check gcloud paths on docker for jenkins 
+              withCredentials([file(credentialsId: 'projectname', variable:'GOOGLE_APPLICATION_CREDENTIALS' )]){
+                        sh 'echo "${GOOGLE_APPLICATION_CREDENTIALS}"'
+                        sh '/root/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
+                        echo 'SET project ID................................................................'
+                        sh '/root/google-cloud-sdk/bin/gcloud config set project projectname'
+                        sh '/root/google-cloud-sdk/bin/gcloud container clusters get-credentials clustername --zone=us-east1-b'
+                        echo 'UPDATING GCLOUD...............................................................'
+                        sh '/root/google-cloud-sdk/bin/gcloud --quiet components update'
+                        echo 'FIND STATIC adress needed for ingress if not run compute addresses create.....'
+                        sh '/root/google-cloud-sdk/bin/gcloud compute addresses describe static-ip  --global'
+                        echo 'EXECUTING INITIAL CD shell scripts............................................'
+                        sh '/root/google-cloud-sdk/bin/gcloud --quiet alpha cloud-shell ssh --command=ls --verbosity debug'
+                      }
+            }
+        }
+        //stage('Deploy K8s') {
+        //            steps{
+        //                git url: 'https://exampleproject.git'
+        //                step([$class: 'KubernetesEngineBuilder',
+        //                        projectId: "projectname",
+        //                        clusterName: "clustername",
+        //                        zone: "us-east1-b",
+        //                        manifestPattern: 'k8s/',
+        //                        credentialsId: "nameofcredentials",
+        //                        verifyDeployments: true])
+        //            }
+        //        }
+    }
+}
+

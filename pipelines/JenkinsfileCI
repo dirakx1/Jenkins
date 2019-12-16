@@ -1,0 +1,35 @@
+// Devops CI pipeline for example  app backend
+echo("INIT.............")
+echo ("USING our own DOCKERFILE........")
+pipeline {
+
+
+   agent { dockerfile true }
+
+   stages {
+
+       stage('1...Install') {
+
+           steps {
+               sh 'mvn clean install -Pgcp'
+           }
+       }
+
+       stage('2...Test') {
+
+           steps {
+                      sh 'mvn test'
+                }
+              }
+       stage('Showing Help') {
+           steps {
+               sh 'mvn -h' // example please change.
+           }
+       }
+       stage('Deploy') {
+           steps {
+               sh 'mvn -h' // Example please change: login into GCP
+           }
+       }
+   }
+}

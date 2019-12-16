@@ -1,0 +1,40 @@
+# Proper Jenkins INSTALL dockerfile NOT the same as MS execution dockefiles!  
+# TODO erase root, reduce layers of execution 
+
+FROM jenkinsci/blueocean
+USER root 
+RUN apk add maven
+RUN apk add shadow
+RUN usermod --shell /bin/bash root
+RUN apk update
+RUN apk add bash
+RUN apk add bash-completion
+
+# Install python and related packages
+RUN apk --update add python
+RUN python -v
+RUN apk add curl
+RUN apk add --update py-pip
+RUN pip install google-api-python-client==1.7.11
+
+# Install kubectl
+RUN curl -LO  https://storage.googleapis.com/kubernetes-release/release/v1.11.5/bin/linux/amd64/kubectl
+RUN chmod +x ./kubectl
+RUN mv ./kubectl /usr/local/bin/kubectl
+RUN  kubectl
+
+# Install gcloud
+RUN curl -LO https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-261.0.0-linux-x86_64.tar.gz
+RUN tar -xvf google-cloud-sdk-261.0.0-linux-x86_64.tar.gz
+RUN CLOUDSDK_CORE_DISABLE_PROMPTS=1 ./google-cloud-sdk/install.sh
+#RUN /bin/bash -c "source ./root/.bashrc"
+RUN /bin/bash -c "source /google-cloud-sdk/completion.bash.inc"
+RUN /bin/bash -c "source /google-cloud-sdk/path.bash.inc"
+RUN /bin/bash -c "ls /google-cloud-sdk/bin/gcloud"
+
+# Install docker credential for gdr (google docker registry) interaction
+RUN curl -fsSL "https://github.com/GoogleCloudPlatform/docker-credential-gcr/releases/download/v1.5.0/docker-credential-gcr_linux_amd64-1.5.0.tar.gz" \
+      | /bin/bash -c "tar xz --to-stdout ./docker-credential-gcr" \
+      | /bin/bash -c "tee /usr/bin/docker-credential-gcr > /dev/null && chmod +x /usr/bin/docker-credential-gcr"
+
+
