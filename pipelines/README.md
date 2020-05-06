@@ -1,6 +1,7 @@
 # Pipelines
 
-Different examples of pipelines in Jenkins
+Different examples of pipelines in Jenkins, there are declarative and scripted pipelines.
+delcarative pipelines are aesier to understand and use but are not as customizable as scripted (groovy) pipelines.
 
 ## Pipelines with groovy. 
 
