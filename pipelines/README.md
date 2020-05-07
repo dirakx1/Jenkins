@@ -83,3 +83,6 @@ def call(Map config = [:]) {
     stash(name: "${config.stashName}", includes: 'target/**')
 }
 ```
+
+## References:
+* https://www.jenkins.io/doc/book/pipeline/scaling-pipeline/
