@@ -1,0 +1,17 @@
+@Library('shared-starter') _
+pipeline {
+  agent any
+  stages {
+    stage('hello') {
+      steps {
+        helloWorldSimple("Fred","Friday")
+      }
+    }
+  }
+}
+
+helloWorldSimple.groovy
+
+def call(String name, String dayOfWeek) {
+  sh "echo Hello World ${name}. It is ${dayOfWeek}."
+}
