@@ -1,7 +1,7 @@
 # Pipelines
 
 Different examples of pipelines in Jenkins, there are declarative and scripted pipelines.
-delcarative pipelines are aesier to understand and use but are not as customizable as scripted (groovy) pipelines.
+delcarative pipelines are easier to understand and use but are not as customizable as scripted (groovy) pipelines.
 
 ## Pipelines with groovy. 
 
@@ -74,4 +74,12 @@ def Set() {
 }
 
 // call Set function here. 
+```
+A Simple example of a shared library
+
+```
+def call(Map config = [:]) {
+    archiveArtifacts 'target/*.jar'
+    stash(name: "${config.stashName}", includes: 'target/**')
+}
 ```
