@@ -82,4 +82,22 @@ or access the DB via docker and configure users following:
 * Construct the pipelines (backend-frontend) needed to run.(see [pipelines](/pipelines/README.md))
 
 
+## Hints for jenkins usage
+* Durability/Scallability of pipelines
+* Parallel usage
+* preserveStashes for use if a "restar stage" option is used
+* Use groovySandbox, ScriptSecurity plugin foir security
+* Use Secrets for passwords etc.
+* Keep it simple, try to use more declarative than scripted. 
+* Use comand line tools instead of groovy tools for XML and JSON parsing
+* Try to use external scripts and tools insted of groovy
+* Reduce number of steps in pipeline
+
+
+
+
+
+
+
+
 
