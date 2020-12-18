@@ -92,6 +92,8 @@ or access the DB via docker and configure users following:
 * Use comand line tools instead of groovy tools for XML and JSON parsing
 * Try to use external scripts and tools insted of groovy
 * Reduce number of steps in pipeline
+* Try to use Configuration as a code plugins. 
+
 
 
 
